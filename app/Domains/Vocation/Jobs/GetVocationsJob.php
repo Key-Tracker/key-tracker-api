@@ -24,6 +24,6 @@ class GetVocationsJob extends Job
      */
     public function handle()
     {
-        return Vocation::all();
+        return Vocation::with('company')->paginate(5);
     }
 }

@@ -2,10 +2,13 @@
 
 namespace App\Data\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Traits\HasUuid;
 use Database\Factories\VocationFactory;
+use App\Data\Models\Company;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Model;
+
 
 class Vocation extends Model
 {
@@ -21,8 +24,15 @@ class Vocation extends Model
         'notification',
     ];
 
+
     protected static function newFactory()
     {
-        return VocationFactory::new();
-    }        
+        return VocationFactory::new ();
+    }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
+
 }
